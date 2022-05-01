@@ -1,0 +1,20 @@
+[
+{
+  "model": "Departments.department",
+  "pk": 1,
+  "fields": {
+    "name": "F&B",
+    "description": "FOH and BOH",
+    "image": "https://cdn.londonandpartners.com/3/5924765/YXBwLnNoYXJpbnBpeC5jb20vaW1hZ2VfZXh0ZXJuYWxfdXJscy84ZjNiNTYxZS0xNWJhLTQzOGYtOGI2Mi1jOGNmMWE2NDVhN2I/8f3b561e-15ba-438f-8b62-c8cf1a645a7b.jpg"
+  }
+},
+{
+  "model": "Departments.department",
+  "pk": 2,
+  "fields": {
+    "name": "SightSeeing",
+    "description": "sightseeing service",
+    "image": "https://assets.cityexperiences.com/wp-content/uploads/2021/09/Small_CityCruises_London_Sightseeing.jpg"
+  }
+}
+]

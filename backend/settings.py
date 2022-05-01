@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # }
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://zanas@localhost/CompaniesP4', conn_max_age=600
+        default='postgres://postgres:postgres@localhost/TeamsP4', conn_max_age=600
     )
 }
 
