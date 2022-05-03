@@ -13,8 +13,8 @@ class Worker(models.Model):
     active = models.BooleanField(default=False)
     registeredAt = models.DateTimeField(auto_now=True, null=True)
     updatedAt = models.DateTimeField(auto_now=True, null=True)
-    userID = models.ForeignKey(
-        User, related_name='workers', on_delete=models.CASCADE, null=True, default=None)
+    userID = models.OneToOneField(
+        User, on_delete=models.CASCADE, null=True, default=None)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} [role:{self.role}, active:{self.active}]"

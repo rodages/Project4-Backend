@@ -1,5 +1,7 @@
 from django.db import models
 
+from Workers.models import Worker
+
 # Create your models here.
 
 
@@ -10,7 +12,9 @@ class Department(models.Model):
         max_length=200, default=None, null=True, blank=True)
     image = models.CharField(
         max_length=200, default=None, null=True, blank=True)
-    # link to users/workers
+    # if user model gets extended,change to User
+    workers = models.ManyToManyField(
+        Worker, related_name="departments")
     # link to shifts
 
     def __str__(self):
