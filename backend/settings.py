@@ -52,6 +52,8 @@ INSTALLED_APPS = [
 
     'Departments',
     'Workers',
+    'Posts',
+    'Shifts',
 
 ]
 

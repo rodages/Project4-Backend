@@ -10,7 +10,7 @@ class Worker(models.Model):
     last_name = models.CharField(max_length=50, default=None)
     role = models.CharField(max_length=30, default=None)
     postcode = models.CharField(max_length=10, default=None)
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     registeredAt = models.DateTimeField(auto_now=True, null=True)
     updatedAt = models.DateTimeField(auto_now=True, null=True)
     userID = models.OneToOneField(
