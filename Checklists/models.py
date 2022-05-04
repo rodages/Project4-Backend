@@ -18,7 +18,7 @@ class Checklist(models.Model):
 
 class Subsection(models.Model):
     name = models.CharField(max_length=200, default=None, null=True)
-    created_at = models.DateTimeField(auto_now=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
     edited_at = models.DateTimeField(auto_now=True, null=True)
     # createdBy
     # lastEditedBy
