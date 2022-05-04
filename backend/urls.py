@@ -22,5 +22,9 @@ urlpatterns = [
     path('workers/', include('Workers.urls')),
     path('posts/', include('Posts.urls')),
     path('shifts/', include('Shifts.urls')),
-    #path("users/", include("Users.urls"))
+    path('checklists/', include('Checklists.urls')),
+    path('subsections/', include('Subsections.urls')),
+    # path('items/', include('Items.urls')),
+    # path('tasks/', include('Tasks.urls')),
+    path("users/", include("Users.urls"))
 ]

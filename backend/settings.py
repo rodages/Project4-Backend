@@ -54,7 +54,11 @@ INSTALLED_APPS = [
     'Workers',
     'Posts',
     'Shifts',
-    # 'Users',
+    'Checklists',
+    'Subsections',
+    # 'Items',
+    # 'Tasks',
+    'Users',
 
 ]
 
@@ -109,7 +113,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # }
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://postgres:postgres@localhost/TeamsP4', conn_max_age=600
+        # default='postgres://postgres:postgres@localhost/TeamsP4', conn_max_age=600
+        default='postgres://postgres:postgres@localhost/P4Test', conn_max_age=600
     )
 }
 
@@ -132,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# AUTH_USER_MODEL = 'Users.CustomUser'
+AUTH_USER_MODEL = 'Users.CustomUser'
 
 
 # Internationalization

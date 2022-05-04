@@ -47,7 +47,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             email=data['email'],
             first_name=data['first_name'],
             last_name=data['last_name'],
-            DOB=data['DOB'],
+            # DOB=data['DOB'],
         )
 
         # Password has to be set via `set_password` in order to be hashed!
