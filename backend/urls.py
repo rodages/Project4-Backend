@@ -24,7 +24,7 @@ urlpatterns = [
     path('shifts/', include('Shifts.urls')),
     path('checklists/', include('Checklists.urls')),
     path('subsections/', include('Subsections.urls')),
-    # path('items/', include('Items.urls')),
-    # path('tasks/', include('Tasks.urls')),
+    path('inventoryitems/', include('InventoryItems.urls')),
+    path('tasks/', include('Tasks.urls')),
     path("users/", include("Users.urls"))
 ]

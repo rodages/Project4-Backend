@@ -9,3 +9,6 @@ class Subsection(models.Model):
     edited_at = models.DateTimeField(auto_now=True, null=True)
     # createdBy
     # lastEditedBy
+
+    def __str__(self):
+        return f"{self.name}"

@@ -56,8 +56,8 @@ INSTALLED_APPS = [
     'Shifts',
     'Checklists',
     'Subsections',
-    # 'Items',
-    # 'Tasks',
+    'InventoryItems',
+    'Tasks',
     'Users',
 
 ]
