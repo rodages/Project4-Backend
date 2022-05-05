@@ -5,6 +5,18 @@ from django.contrib.auth.password_validation import validate_password
 from Users.models import CustomUser
 
 
+class UpdateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ("DOB", "postcode", "email", "password")
+
+
+class UsersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+
+
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -15,7 +27,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             'first_name': {'required': True},
             'last_name': {'required': True}
         }
-
+    DOB = serializers.DateField()
     # make sure email in DB is unique via `UniqueValidator`
     email = serializers.EmailField(
         required=True,
@@ -43,11 +55,12 @@ class RegisterSerializer(serializers.ModelSerializer):
         """data is already validated at this point"""
 
         user = CustomUser.objects.create(
-            username=data['username'],
+            # username=data['username'],
+            username=f"{data['first_name'].lower()}.{data['last_name'].lower()}",
             email=data['email'],
             first_name=data['first_name'],
             last_name=data['last_name'],
-            # DOB=data['DOB'],
+            DOB=data['DOB']
         )
 
         # Password has to be set via `set_password` in order to be hashed!
