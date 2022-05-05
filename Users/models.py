@@ -18,3 +18,4 @@ class CustomUser(AbstractUser):
     # need to delete null true
     role = models.CharField(
         max_length=50, choices=ROLE_CHOICES, default="Regular Staff", null=True)
+#
