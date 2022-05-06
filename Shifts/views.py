@@ -6,10 +6,10 @@ from Shifts.serializers import ShiftSerializer
 
 
 class ShiftListView(generics.ListCreateAPIView):
-    queryset = Shift.objects.all
+    queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
 
 
 class ShiftDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Shift.objects.all
+    queryset = Shift.objects.all()
     serializer_class = ShiftSerializer

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from .models import Shift
 
 
-class ShiftSerializer():
+class ShiftSerializer(serializers.ModelSerializer):
     # checklist
     # worker_worked
     # worker_worker confirmed

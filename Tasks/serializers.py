@@ -3,6 +3,8 @@ from .models import Task
 
 
 class TaskSerializer(serializers.ModelSerializer):
+    checklist_tasks = serializers.StringRelatedField(
+        many=True, read_only=True)
 
     class Meta:
         model = Task

@@ -1,7 +1,7 @@
 from django.db import models
 from Subsections.models import Subsection
-#from InventoryItems.models import InventoryItem
-#from Tasks.models import Task
+from InventoryItems.models import InventoryItem
+from Tasks.models import Task
 
 # Create your models here.
 
@@ -12,10 +12,12 @@ class Checklist(models.Model):
     Amount = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now=True, null=True)
     edited_at = models.DateTimeField(auto_now=True, null=True)
-    checklist_sections = models.ManyToManyField(
-        Subsection, blank=True, related_name="checklist_sections")
-    #inventory_items = models.ManyToManyField(InventoryItem, blank=True, related_name="subsection_items")
-    #tasks = models.ManyToManyField(Task, blank=True, related_name="subsection_tasks")
+    sales_target = models.FloatField(default=0)
+    #checklist_sections = models.ManyToManyField(Subsection, blank=True, related_name="checklist_sections")
+    inventory_items = models.ManyToManyField(
+        InventoryItem, blank=True, related_name="checklist_items")
+    tasks = models.ManyToManyField(
+        Task, blank=True, related_name="checklist_tasks")
 
     # createdBy
     # lastEditedBy
