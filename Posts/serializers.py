@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Workers.models import Worker
+from Users.models import CustomUser
 from .models import Post
 
 
@@ -8,16 +8,16 @@ from .models import Post
 #         model=Department
 #         fields =
 
-class WorkerSerializer(serializers.ModelSerializer):
+class CustomUserSerializer(serializers.ModelSerializer):
     departments = serializers.StringRelatedField(read_only=True, many=True)
 
     class Meta:
-        model = Worker
+        model = CustomUser
         fields = ("first_name", "last_name", "role", "departments")
 
 
 class PostSerializer(serializers.ModelSerializer):
-    createdBy = WorkerSerializer()
+    createdBy = CustomUserSerializer()
 
     class Meta:
         model = Post

@@ -1,12 +1,13 @@
 from rest_framework import serializers
 from .models import Department
-from Workers.models import Worker
+from Users.models import CustomUser
 
 
 class WorkerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Worker
-        fields = ("first_name", "last_name", "role", "active", "userID")
+        model = CustomUser
+        fields = ("__all__")
+        #fields = ("first_name", "last_name", "role", "active", "userID")
 
 
 class DepartmentSerializer(serializers.ModelSerializer):

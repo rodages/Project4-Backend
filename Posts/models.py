@@ -1,5 +1,5 @@
 from django.db import models
-from Workers.models import Worker
+from Users.models import CustomUser
 
 # Create your models here.
 
@@ -11,7 +11,7 @@ class Post(models.Model):
     createdAt = models.DateTimeField(auto_now=True, null=True)
     updatedAt = models.DateTimeField(auto_now=True, null=True)
     createdBy = models.ForeignKey(
-        Worker, on_delete=models.CASCADE, null=True, related_name="posts")
+        CustomUser, on_delete=models.CASCADE, null=True, related_name="posts")
 
     def __str__(self):
         return f"{self.createdBy}-{self.title}"

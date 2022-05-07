@@ -20,11 +20,9 @@ from rest_framework_simplejwt import views as jwt_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('departments/', include('Departments.urls')),
-    path('workers/', include('Workers.urls')),
     path('posts/', include('Posts.urls')),
     path('shifts/', include('Shifts.urls')),
     path('checklists/', include('Checklists.urls')),
-    path('subsections/', include('Subsections.urls')),
     path('inventoryitems/', include('InventoryItems.urls')),
     path('tasks/', include('Tasks.urls')),
     path("users/", include("Users.urls")),

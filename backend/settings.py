@@ -51,11 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'Departments',
-    'Workers',
     'Posts',
     'Shifts',
     'Checklists',
-    'Subsections',
     'InventoryItems',
     'Tasks',
     'Users',

@@ -1,6 +1,6 @@
 from django.db import models
 
-from Workers.models import Worker
+from Users.models import CustomUser
 
 # Create your models here.
 
@@ -14,7 +14,7 @@ class Department(models.Model):
         max_length=200, default=None, null=True, blank=True)
     # if user model gets extended,change to User
     workers = models.ManyToManyField(
-        Worker, related_name="departments")
+        CustomUser, related_name="departments")
     # link to shifts
 
     def __str__(self):
