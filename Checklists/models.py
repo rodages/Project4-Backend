@@ -7,12 +7,11 @@ from Tasks.models import Task
 
 class Checklist(models.Model):
     name = models.CharField(max_length=100, default=None)
-    description = models.CharField(max_length=100, default=None)
-    amount = models.PositiveIntegerField(default=0)
+    description = models.CharField(
+        max_length=100, default=None, blank=True, null=True)
     created_at = models.DateTimeField(auto_now=True, null=True)
     edited_at = models.DateTimeField(auto_now=True, null=True)
     sales_target = models.FloatField(default=0)
-    #checklist_sections = models.ManyToManyField(Subsection, blank=True, related_name="checklist_sections")
     inventory_items = models.ManyToManyField(
         InventoryItem, blank=True, related_name="checklist_items")
     tasks = models.ManyToManyField(

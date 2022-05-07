@@ -2,6 +2,7 @@ from datetime import date
 from django.db import models
 from Departments.models import Department
 from Users.models import CustomUser
+from Checklists.models import Checklist
 
 # Create your models here.
 
@@ -14,6 +15,9 @@ class ChecklistItem(models.Model):
     count = models.BigIntegerField(null=True, default=0)
     completed_by = models.ForeignKey(
         CustomUser, related_name="completed", on_delete=models.SET_NULL, null=True)
+    checklist_name = models.CharField(max_length=100, default=None, null=True)
+    # need to create this in items as choice field
+    section_name = models.CharField(max_length=100, default=None, null=True)
 
 
 class Shift(models.Model):
@@ -26,6 +30,10 @@ class Shift(models.Model):
         Department, related_name="shifts", null=True, on_delete=models.SET_NULL, blank=True)
     created_by = models.ForeignKey(
         CustomUser, related_name="checklists_created", on_delete=models.SET_NULL, null=True)
+    checklists = models.ManyToManyField(
+        Checklist, related_name="shifts", null=True, blank=True)
+    checklist = models.ManyToManyField(
+        ChecklistItem, related_name="items", null=True, blank=True)
 
     def __str__(self):
         return f"{self.name} - {self.description}"
