@@ -8,9 +8,12 @@ class InventoryItem(models.Model):
     extra_from_checklist_amount = models.IntegerField(default=0)
     completed_status = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
+    assigned_to_checklist = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now=True, null=True)
     edited_at = models.DateTimeField(auto_now=True, null=True)
     #completed_by = models.ForeignKey(CustomUser, related_name="items_approved", null=True, on_delete=models.SET_NULL)
+    created_by = models.ForeignKey(
+        CustomUser, related_name="created_items", null=True, on_delete=models.SET_NULL)
     # created_by ref to User
 
     def __str__(self):

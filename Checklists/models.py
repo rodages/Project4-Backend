@@ -9,7 +9,7 @@ from Tasks.models import Task
 class Checklist(models.Model):
     name = models.CharField(max_length=100, default=None)
     description = models.CharField(max_length=100, default=None)
-    Amount = models.PositiveIntegerField(default=0)
+    amount = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now=True, null=True)
     edited_at = models.DateTimeField(auto_now=True, null=True)
     sales_target = models.FloatField(default=0)
