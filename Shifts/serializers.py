@@ -11,31 +11,47 @@ class ChecklistItemSerializer(serializers.ModelSerializer):
 
 
 class ShiftSerializer(serializers.ModelSerializer):
-    #checklist = ChecklistItemSerializer(many=True)
+    #checklist_items = ChecklistItemSerializer(many=True)
 
     class Meta:
         model = Shift
         fields = '__all__'
 
     def create(self, data):
-        checklist_data = data.pop("checklists")
+        if data["checklists"]:
+            checklists_data = data.pop("checklists")
+        if data["checklist_items"]:
+            checklist_item_data = data.pop("checklist_items")
         new_shift = Shift(**data)
 
         new_shift.save()
-        if checklist_data:
-            for checklist in checklist_data:
+        if checklists_data:
+            for checklist in checklists_data:
                 current_checklist, _created = Checklist.objects.get_or_create(
                     pk=checklist.id)
                 for task in current_checklist.tasks.all():
-                    item = ChecklistItem(name="item name", comment="comment")
+                    item = ChecklistItem(
+                        name=task.name,
+                        comment=task.comment,
+                        extra_from_checklist_amount=task.extra_from_checklist_amount,
+                        checklist_name=current_checklist.name,
+                        section_name=task.section_name,
+                        type="task"
+
+                    )
                     item.save()
-                    new_shift.checklist.add(item)
+                    new_shift.checklist_items.add(item)
 
                 for item in current_checklist.inventory_items.all():
                     checklist_item = ChecklistItem(
-                        name="task name", comment="none")
+                        name=item.name,
+                        comment=item.comment,
+                        extra_from_checklist_amount=item.extra_from_checklist_amount,
+                        checklist_name=current_checklist.name,
+                        section_name=item.section_name,
+                        type="item")
                     checklist_item.save()
-                    new_shift.checklist.add(checklist_item)
+                    new_shift.checklist_items.add(checklist_item)
 
                 new_shift.checklists.add(current_checklist)
 

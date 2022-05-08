@@ -16,8 +16,7 @@ class ChecklistItem(models.Model):
 
     assigned_to = models.CharField(
         max_length=50, default=None, null=True, blank=True)
-    completed_by = models.ForeignKey(
-        CustomUser, related_name="completed", on_delete=models.SET_NULL, null=True, blank=True)
+    #completed_by = models.ForeignKey(CustomUser, related_name="completed", on_delete=models.SET_NULL, null=True, blank=True)
 
     checklist_name = models.CharField(max_length=100, default=None, null=True)
     section_name = models.CharField(
@@ -31,9 +30,9 @@ class Shift(models.Model):
     date = models.DateField(blank=True, null=True, )
     start_time = models.TimeField(auto_now_add=True)
     end_time = models.TimeField(auto_now_add=True)
-    leaving_pier = models.TimeField(null=True, blank=True)
-    boarding = models.TimeField(null=True, blank=True)
-    dropoff = models.TimeField(null=True, blank=True)
+    leaving_pier = models.TimeField(null=True, blank=True, default=None)
+    boarding = models.TimeField(null=True, blank=True, default=None)
+    dropoff = models.TimeField(null=True, blank=True, default=None)
 
     used_as_template = models.BooleanField(default=False)
 
@@ -43,7 +42,7 @@ class Shift(models.Model):
         CustomUser, related_name="checklists_created", on_delete=models.SET_NULL, null=True)
     checklists = models.ManyToManyField(
         Checklist, related_name="shifts", blank=True)
-    checklist = models.ManyToManyField(
+    checklist_items = models.ManyToManyField(
         ChecklistItem, related_name="items", blank=True)
 
     def __str__(self):
