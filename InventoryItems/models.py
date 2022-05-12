@@ -16,6 +16,8 @@ class InventoryItem(models.Model):
     section_name = models.CharField(
         max_length=50, choices=SECTION_TYPES, default="Other", null=True)
     name = models.CharField(max_length=200, default=None, null=True)
+    image = models.CharField(
+        max_length=200, default=None, null=True, blank=True)
     comment = models.CharField(
         max_length=500, default=None, null=True, blank=True)
     extra_from_checklist_amount = models.IntegerField(default=0, blank=True)

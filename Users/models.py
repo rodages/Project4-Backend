@@ -7,10 +7,10 @@ from datetime import date
 
 class CustomUser(AbstractUser):
     ROLE_CHOICES = (
-        ("reg", "Regular Staff"),
-        ("sup", "Supervisor"),
-        ("mng", "Manager"),
-        ("dir", "Director"),
+        ("Regular Staff", "Regular Staff"),
+        ("Supervisor", "Supervisor"),
+        ("Manager", "Manager"),
+        ("Director", "Director"),
     )
     DOB = models.DateField(default=date.today())
     postcode = models.CharField(

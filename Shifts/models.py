@@ -41,9 +41,9 @@ class Shift(models.Model):
     created_by = models.ForeignKey(
         CustomUser, related_name="checklists_created", on_delete=models.SET_NULL, null=True)
     checklists = models.ManyToManyField(
-        Checklist, related_name="shifts", blank=True)
+        Checklist, related_name="shifts", blank=True, null=True)
     checklist_items = models.ManyToManyField(
-        ChecklistItem, related_name="items", blank=True)
+        ChecklistItem, related_name="items", blank=True, null=True)
 
     def __str__(self):
         return f"{self.name} - {self.description}"

@@ -1,6 +1,7 @@
 from django.db import models
 from InventoryItems.models import InventoryItem
 from Tasks.models import Task
+from Departments.models import Department
 
 # Create your models here.
 
@@ -16,7 +17,8 @@ class Checklist(models.Model):
         InventoryItem, blank=True, related_name="checklist_items")
     tasks = models.ManyToManyField(
         Task, blank=True, related_name="checklist_tasks")
-
+    department = models.ForeignKey(
+        Department, on_delete=models.CASCADE, null=True, blank=True, related_name="department_checklists")
     # createdBy
     # lastEditedBy
 

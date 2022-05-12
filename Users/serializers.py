@@ -3,12 +3,19 @@ from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 
 from Users.models import CustomUser
+from django.contrib.auth.models import User
+
+# class AbstractUserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ''
 
 
 class UpdateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ("DOB", "postcode", "email", "password")
+        fields = ("DOB", "postcode", "email", "password",
+                  "is_active", "role", "username")
 
 
 class UsersSerializer(serializers.ModelSerializer):

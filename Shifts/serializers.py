@@ -10,17 +10,28 @@ class ChecklistItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ShiftTemplateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shift
+        fields = ('id', 'used_as_template')
+
+
 class ShiftSerializer(serializers.ModelSerializer):
-    #checklist_items = ChecklistItemSerializer(many=True)
+    checklist_items = ChecklistItemSerializer(many=True)
+    hours = serializers.IntegerField(required=True, write_only=True)
+    minutes = serializers.IntegerField(required=True, write_only=True)
 
     class Meta:
         model = Shift
         fields = '__all__'
 
     def create(self, data):
-        if data["checklists"]:
+        checklists_data = None
+        checklist_item_data = None
+        print(data)
+        if hasattr(data, "checklists"):
             checklists_data = data.pop("checklists")
-        if data["checklist_items"]:
+        if hasattr(data, "checklist_items"):
             checklist_item_data = data.pop("checklist_items")
         new_shift = Shift(**data)
 
