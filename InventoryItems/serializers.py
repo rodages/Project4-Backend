@@ -8,6 +8,16 @@ class InventoryItemSerializer(serializers.ModelSerializer):
         model = InventoryItem
         fields = '__all__'
 
+    def create(self, data):
+        inventoryItem = InventoryItem(**data)
+
+        request = self.context.get("reqest")
+        if request and hasattr(request, "user"):
+            created_by = request.user
+            inventoryItem.created_by = created_by
+
+        inventoryItem.save()
+
     def update(self, inventory_item, data):
         inventory_item.item_name = data.get(
             "item_name", inventory_item.item_name)

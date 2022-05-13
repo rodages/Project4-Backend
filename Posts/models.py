@@ -15,6 +15,7 @@ class Post(models.Model):
         CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name="users_posts")
     department = models.ForeignKey(
         Department, on_delete=models.CASCADE, null=True, blank=True, related_name="department_posts")
+    departmentID = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.createdBy}-{self.title}"
