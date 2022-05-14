@@ -73,7 +73,8 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://companyplanner.netlify.app'
 ]
 
 ROOT_URLCONF = 'backend.urls'
