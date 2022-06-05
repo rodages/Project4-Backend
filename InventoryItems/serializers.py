@@ -9,6 +9,7 @@ class InventoryItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, data):
+        print(data)
         inventoryItem = InventoryItem(**data)
 
         request = self.context.get("request")
